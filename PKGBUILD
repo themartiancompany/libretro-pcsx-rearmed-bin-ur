@@ -82,7 +82,7 @@ _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
 _lib_sum="c99da6071940ac1bd1a4704474ca3375796240eec60dc945f8c410fa8a9f41a6"
 _evmfs_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_lib_sum}"
-_lib_src="${_lib}::${_evmfs_uri}"
+_lib_src="${_lib}.tar.xz::${_evmfs_uri}"
 source+=(
   "${_lib_src}"
 )

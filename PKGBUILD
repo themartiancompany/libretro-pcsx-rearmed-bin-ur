@@ -19,10 +19,14 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-# Maintainer: Truocolo <truocolo@aol.com>
-# Maintainer: Truocolo <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
-# Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
-# Maintainer: Pellegrino Prevete (tallero) <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
+# Maintainer:
+#   Truocolo
+#     <truocolo@aol.com>
+#     <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
+# Maintainer:
+#   Pellegrino Prevete (dvorak)
+#     <pellegrinoprevete@gmail.com>
+#     <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
 
 _os="$( \
   uname \
@@ -40,6 +44,7 @@ _pkgdesc=(
 )
 pkgdesc="${_pkgdesc[*]}"
 arch=(
+  'aarch64'
   'arm'
   'armv7l'
 )
@@ -72,9 +77,13 @@ checkdepends=(
 )
 provides=(
   "${_pkgname}=${pkgver}"
+  "${_pkgname}-android=${pkgver}"
+  "${_pkgname}-android-bin=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
+  "${_pkgname}-android"
+  "${_pkgname}-android-bin"
 )
 source=()
 sha256sums=()
@@ -82,7 +91,12 @@ _lib="${_pkg}_libretro_android.so"
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
-_lib_sum="c99da6071940ac1bd1a4704474ca3375796240eec60dc945f8c410fa8a9f41a6"
+if [[ "${_arch}" == "arm" || \
+      "${_arch}" == "armv7l" ]]; then
+  _lib_sum="c99da6071940ac1bd1a4704474ca3375796240eec60dc945f8c410fa8a9f41a6"
+elif [[ "${_arch}" == "aarch64" ]]; then
+  _lib_sum="ciao"
+fi
 _evmfs_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_lib_sum}"
 _lib_src="${_lib}.tar.xz::${_evmfs_uri}"
 source+=(

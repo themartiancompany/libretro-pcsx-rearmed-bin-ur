@@ -95,7 +95,7 @@ if [[ "${_arch}" == "arm" || \
       "${_arch}" == "armv7l" ]]; then
   _lib_sum="c99da6071940ac1bd1a4704474ca3375796240eec60dc945f8c410fa8a9f41a6"
 elif [[ "${_arch}" == "aarch64" ]]; then
-  _lib_sum="ciao"
+  _lib_sum="190a0cd437d7a05aa0e25a468009fe81ad857ff43c9125a24a46387e4d76d23a"
 fi
 _evmfs_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_lib_sum}"
 _lib_src="${_lib}.tar.xz::${_evmfs_uri}"
